@@ -1,3 +1,22 @@
 .list-group-item {
   line-height: 2.5;
 }
+.navbar{
+  background:rgb(0, 108, 249);
+}
+.nav-link, .navbar-brand{
+  color:#f4f4f4;
+  
+}
+.navbar-brand{
+  font-size: 30px;
+}
+.navbar-collapse{
+  justify-content: flex-end;
+}
+.navbar-collapse{
+  justify-content: flex-end;
+}
+.navbar-toggler{
+  background: #fff !important;
+}
