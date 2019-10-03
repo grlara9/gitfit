@@ -1,16 +1,55 @@
+ <nav class="navbar navbar-expand-lg fixed-top ">  
+            <a class="navbar-brand" href="index.html" style="font-family: 'Pacifico', cursive;">gitFit APP</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">  
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse " id="navbarSupportedContent">     
+                <ul class="navbar-nav mr-4">
+                    <li class="nav-item">
+                        <a class="nav-link" data-value="about" href="#">Home</a></li>  
+                        <li class="nav-item">
+                            <a class="nav-link " data-value="portfolio"href="#">Exercises</a>    
+                        </li>
+                        <li class="nav-item"> 
+                            <a class="nav-link " data-value="blog" href="#">Meal Prep</a></li>   
+                            <li class="nav-item">  
+                            <a class="nav-link " data-value="team" href="#"></a></li>  
+                            <li class="nav-item"> 
+                                <a class="nav-link " data-value="contact" href="#">Contact</a></li> 
+                            </ul> 
+                        </div>
+                    </nav>
+
+
+
+
+
 <div id="home">
   <div class="container">
     <div class="row">
       <div class="col-8 offset-2">
         <h1>{{msg}}</h1>
-        <h2>This is our Home Page!</h2>
+        <h2>Welcome to the gitFit App. Here you will  </h2>
+        <h2>Please Enter Your Stats Below!</h2>
         <form class="clearfix mb-4" action="POST">
           <div class="form-group">
-            <label for="example-text">Example Text</label>
+            <label for="example-text">Height</label>
             <input type="text" id="example-text" class="form-control" aria-describedby="example-text" placeholder="Enter Example Text">
           </div>
           <div class="form-group">
-            <label for="example-description">Example Description</label>
+            <label for="example-text">Weight</label>
+            <input type="text" id="example-text" class="form-control" aria-describedby="example-text" placeholder="Enter Example Text">
+          </div>
+          <div class="form-group">
+            <label for="example-text">Age</label>
+            <input type="text" id="example-text" class="form-control" aria-describedby="example-text" placeholder="Enter Example Text">
+          </div>
+          <div class="form-group">
+            <label for="example-text">Physical Activity</label>
+            <input type="text" id="example-text" class="form-control" aria-describedby="example-text" placeholder="Enter Example Text">
+          </div>
+          <div class="form-group">
+            <label for="example-description">What is Your Goal?</label>
             <textarea class="form-control" id="example-description" aria-describedby="example-description" placeholder="Enter Example Description"></textarea>
           </div>
           <button id="submit" class="btn btn-primary float-right">Submit</button>
