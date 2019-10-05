@@ -1,6 +1,10 @@
 // Get references to page elements
-var $exampleText = $("#example-text");
-var $exampleDescription = $("#example-description");
+var $name = $("#name");
+var $height = $("#height");
+var $weight = $("#weight");
+var $age = $("#age");
+var $goal = $("#goal option:selected");
+var $activity = $("#activity option:selected");
 var $submitBtn = $("#submit");
 var $exampleList = $("#example-list");
 
@@ -35,8 +39,9 @@ var refreshExamples = function() {
   API.getExamples().then(function(data) {
     var $examples = data.map(function(example) {
       var $a = $("<a>")
-        .text(example.text)
+        .text(example.name)
         .attr("href", "/example/" + example.id);
+      console.log(example.text);
 
       var $li = $("<li>")
         .attr({
@@ -63,23 +68,29 @@ var refreshExamples = function() {
 // Save the new example to the db and refresh the list
 var handleFormSubmit = function(event) {
   event.preventDefault();
-
+  console.log($goal.text());
   var example = {
-    text: $exampleText.val().trim(),
-    description: $exampleDescription.val().trim()
+    name: $name.val().trim(),
+    age: $age.val().trim(),
+    weight: $weight.val().trim(),
+    height: $height.val().trim(),
+    goal: $goal.text(),
+    activity: $activity.text()
   };
 
-  if (!(example.text && example.description)) {
-    alert("You must enter an example text and description!");
-    return;
-  }
+  // if (!example.name || !example.age || !example.weight || example.height) {
+  //   alert("Please fill out all fields before submitting!");
+  //   return;
+  // }
 
   API.saveExample(example).then(function() {
     refreshExamples();
   });
 
-  $exampleText.val("");
-  $exampleDescription.val("");
+  $name.val("");
+  $height.val("");
+  $weight.val("");
+  $age.val("");
 };
 
 // handleDeleteBtnClick is called when an example's delete button is clicked
