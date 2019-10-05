@@ -5,7 +5,8 @@ module.exports = function(sequelize, DataTypes) {
     weight: DataTypes.INTEGER,
     age: DataTypes.INTEGER,
     goal: DataTypes.STRING,
-    activity: DataTypes.STRING
+    activity: DataTypes.STRING,
+    sex: DataTypes.STRING
   });
   return Example;
 };

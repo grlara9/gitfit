@@ -3,10 +3,11 @@ var $name = $("#name");
 var $height = $("#height");
 var $weight = $("#weight");
 var $age = $("#age");
-var $goal = $("#goal option:selected");
-var $activity = $("#activity option:selected");
 var $submitBtn = $("#submit");
 var $exampleList = $("#example-list");
+var $goal = $("#goal");
+var $activity = $("#activity");
+var $sex = $("#sex");
 
 // The API object contains methods for each kind of request we'll make
 var API = {
@@ -68,14 +69,16 @@ var refreshExamples = function() {
 // Save the new example to the db and refresh the list
 var handleFormSubmit = function(event) {
   event.preventDefault();
-  console.log($goal.text());
+  // console.log($goal.val());
+  console.log($("#goal"));
   var example = {
     name: $name.val().trim(),
     age: $age.val().trim(),
     weight: $weight.val().trim(),
     height: $height.val().trim(),
-    goal: $goal.text(),
-    activity: $activity.text()
+    goal: $("#goal option:selected").text(),
+    activity: $("#activity option:selected").text(),
+    sex: $("#sex option:selected").text()
   };
 
   // if (!example.name || !example.age || !example.weight || example.height) {
@@ -91,6 +94,9 @@ var handleFormSubmit = function(event) {
   $height.val("");
   $weight.val("");
   $age.val("");
+  $goal.val("");
+  $activity.val("");
+  $sex.val("");
 };
 
 // handleDeleteBtnClick is called when an example's delete button is clicked
