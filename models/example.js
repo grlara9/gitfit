@@ -7,6 +7,7 @@ module.exports = function(sequelize, DataTypes) {
     goal: DataTypes.STRING,
     activity: DataTypes.STRING,
     sex: DataTypes.STRING
+    // bmr: bmrvalue(Example.height, Example.weight, Example.age, Example.sex).INTEGER
   });
   return Example;
 };
