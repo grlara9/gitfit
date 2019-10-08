@@ -30,3 +30,14 @@
 #title2 {
   font-size: 20px;
 }
+
+#stats {
+  background-color: black;
+  color: white;
+}
+#userStats {
+  font-size: 30px;
+}
+.container {
+  padding: 50px;
+}
