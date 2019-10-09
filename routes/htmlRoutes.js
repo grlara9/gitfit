@@ -13,24 +13,25 @@ function bmrValue(height, weight, age, sex) {
 function bmrAct(activity, bmr) {
   var act;
   switch (activity) {
-    case "sedentary":
+    case "Sedentary":
       act = 1.2 * bmr;
       break;
-    case "lightly active":
+    case "Lightly Active":
       act = 1.375 * bmr;
       break;
-    case "moderately active":
+    case "Moderately Active":
       act = 1.53 * bmr;
       break;
-    case "active":
+    case "Active":
       act = 1.725 * bmr;
       break;
-    case "very active":
+    case "Very Active":
       act = 1.9 * bmr;
       break;
   }
   return act;
 }
+
 
 console.log(bmrAct("active"));
 
@@ -48,13 +49,22 @@ module.exports = function(app) {
   // Load example page and pass in an example by id
   app.get("/example/:id", function(req, res) {
     db.Example.findOne({ where: { id: req.params.id } }).then(function(info) {
+      var bmr = bmrValue(info.height, info.weight, info.age, info.sex);
+      var bmrMod 
+      switch(info.goal){
+        case "Gain Muscle":
+          bmrMod = 1.15;
+          break;
+        case "Weight Loss":
+          bmrMod = .8;
+          break;
+      }
+      // console.log("BMR LOGGING", bmr);
       res.render("example", {
         example: info,
-        bmr: bmrValue(info.height, info.weight, info.age, info.sex),
-        test: bmrAct(
-          info.activity,
-          bmrValue(info.height, info.weight, info.age, info.sex)
-        )
+        bmr: bmr,
+        test: bmrAct(info.activity, bmr),
+        bmrRec: bmrAct(info.activity, bmr) * bmrMod
       });
     });
     // db.Example.findAll({ where: { id: req.params.id } }).then(function(info) {
