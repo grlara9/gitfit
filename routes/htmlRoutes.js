@@ -1,6 +1,6 @@
 var db = require("../models");
 
-var bmrvalue = function(height, weight, age, sex) {
+function bmrValue(height, weight, age, sex) {
   if (sex === "female") {
     // eslint-disable-next-line prettier/prettier
     return 655 + 4.35 * parseInt(weight) + 4.7 * parseInt(height) - 4.7 * parseInt(age);
@@ -8,7 +8,31 @@ var bmrvalue = function(height, weight, age, sex) {
     // eslint-disable-next-line prettier/prettier
     return (66 + 6.23 * parseInt(weight) + 12.7 * parseInt(height) - 6.8 * parseInt(age));
   }
-};
+}
+
+function bmrAct(activity, bmr) {
+  var act;
+  switch (activity) {
+    case "sedentary":
+      act = 1.2 * bmr;
+      break;
+    case "lightly active":
+      act = 1.375 * bmr;
+      break;
+    case "moderately active":
+      act = 1.53 * bmr;
+      break;
+    case "active":
+      act = 1.725 * bmr;
+      break;
+    case "very active":
+      act = 1.9 * bmr;
+      break;
+  }
+  return act;
+}
+
+console.log(bmrAct("active"));
 
 module.exports = function(app) {
   // Load index page
@@ -26,7 +50,11 @@ module.exports = function(app) {
     db.Example.findOne({ where: { id: req.params.id } }).then(function(info) {
       res.render("example", {
         example: info,
-        bmr: bmrvalue(info.height, info.weight, info.age, info.sex)
+        bmr: bmrValue(info.height, info.weight, info.age, info.sex),
+        test: bmrAct(
+          info.activity,
+          bmrValue(info.height, info.weight, info.age, info.sex)
+        )
       });
     });
     // db.Example.findAll({ where: { id: req.params.id } }).then(function(info) {
