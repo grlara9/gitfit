@@ -1,15 +1,42 @@
+<nav class="navbar navbar-expand-lg fixed-top ">
+  <a class="navbar-brand" href="index.html" style="font-family: 'Pacifico', cursive;">gitFit APP</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse " id="navbarSupportedContent">
+    <ul class="navbar-nav mr-4">
+      <li class="nav-item">
+        <a class="nav-link" data-value="about" href="#">Home</a></li>
+      <li class="nav-item">
+        <a class="nav-link " data-value="portfolio" href="#">Exercises</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link " data-value="blog" href="#">Meal Prep</a></li>
+      <li class="nav-item">
+        <a class="nav-link " data-value="team" href="#"></a></li>
+      <li class="nav-item">
+        <a class="nav-link " data-value="contact" href="#">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+
+<div id="selectionList">
 <label for="workout">Select Your {{workout}} Experience</label>
-<select>
-    <option selected value=""> select an option </option>
-    <option value="beginner">Beginner</option>
+<select id="select">
+    <option id="test5" selected value=""> select an option </option>
+    <option id= "beginner" value="beginner">Beginner</option>
     <option value="intermediate">Intermediate</option>
     <option value="advanced">Advanced</option>
 </select>
+</div>
 
 
 
-<div id="beginnerPlan">
-    <h3 id="testzz">Monday</h3>
+
+<div id="beginnerPlan" style="display: none;">
+    <h3>Monday</h3>
     <ul>
         <li>Dumbbell Squats: 3 sets of 5-6 reps</li>
         <li>Bodyweight Push Ups: 3 sets of 10 reps</li>
@@ -53,7 +80,7 @@
 
 
 
-<div id="intermediatePlan">
+<div id="intermediatePlan" style="display: none;">
     <h3>Monday (Legs/Abs)</h3>
     <ul>
         <li>Barbell Back Squats: 4 sets of 8 reps</li>
@@ -110,7 +137,7 @@
 
 <br>
 
-<div id="advancedPlan">
+<div id="advancedPlan" style="display: none;">
     <h3>Monday (HIIT)</h3>
     <p>After finishing every exercise, rest for 3 minutes, then repeat the circuit for 3 more rounds.</p>
     <ul>
@@ -196,4 +223,5 @@
 
 </div>
 
-<script rel="text/javascript" href="../../public/js/workout.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="/js/workout.js"></script>
