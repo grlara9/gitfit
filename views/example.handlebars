@@ -27,7 +27,7 @@
     <div class="col-8 offset-2">
       <div class="card mt-4">
         <div id="stats" class="card-body">
-          <h5 id= "userStats" class="card-title">User Stats</h5>
+          <h5 id="userStats" class="card-title">User Stats</h5>
           <p>
             <strong>ID</strong>: {{example.id}}</p>
           <p>
@@ -39,27 +39,36 @@
               <p>
                 <strong>Height</strong>: {{example.height}} inches
               </p>
-               <p>
+              <p>
                 <strong>Weight</strong>: {{example.weight}} lbs
               </p>
               <p>
-                <strong>Goal</strong>: {{example.goal}} 
+                <strong>Goal</strong>: {{example.goal}}
               </p>
               <p>
                 <strong>Physical Activity</strong>: {{example.activity}}
               </p>
               <p>
-                <strong>Sex</strong>: {{example.sex}} 
+                <strong>Sex</strong>: {{example.sex}}
               </p>
-              
+
               <a href="/">← Back To Home</a>
         </div>
       </div>
     </div>
   </div>
 </div>
-
 <div>
-  <h1>Based off of your physical stats, your Basal Metabolic Rate (BMR) is {{bmr}} </h1>
+  <h3>Based off of your physical stats, your Basal Metabolic Rate (BMR) is {{bmr}} </h1>
 </div>
-<div>Your BMR + Activity Facor is {{test}}</div>
+<div>
+  <h3>Your BMR + Activity Factor is {{bmrAct}}</h1>
+</div>
+<div>
+  <h3>
+    Our daily recommended caloric intake based on your statistics and goal is {{bmrRec}}
+  </h3>
+</div>
+<div>
+  <h4>Your Macronutrient breakdown is {{proteins}} grams of protein, {{fats}} grams of fat, and {{carbz}} grams of carbohydrates. </h4>
+</div>
