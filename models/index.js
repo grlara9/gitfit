@@ -19,6 +19,19 @@ if (config.use_env_variable) {
   );
 }
 
+var mysql = require("mysql");
+var connection;
+if (process.env.JAWSDB_URL) {
+  connection = mysql.createConnection(process.env.JawsDB_URL);
+} else {
+  connection = mysql.createConnection({
+    host: 'localhost',
+    user: 'root',
+    password: null,
+    database: 'fitness_db'
+  })
+}
+
 fs.readdirSync(__dirname)
   .filter(function(file) {
     return (
