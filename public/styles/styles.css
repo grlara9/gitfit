@@ -21,6 +21,7 @@
   border-bottom-width: 5px;
   border-color: #ff7f08;
 }
+
 .nav-link{
   color:#f4f4f4;
 }
@@ -92,4 +93,10 @@ background-color: #0be642;
 #delete-btn {
   color: red;
   background-color: white;
+}
+
+#selectionList {
+  position: absolute;
+  top: 300px;
+  bottom: 50px;
 }
