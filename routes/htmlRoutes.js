@@ -32,8 +32,23 @@ function bmrAct(activity, bmr) {
   return act;
 }
 
+function bmrMod(goalFactor) {
+  var bmrMod;
+  switch (goalFactor) {
+    case "Gain Muscle":
+      bmrMod = 1.15;
+      break;
+    case "Weight Loss":
+      bmrMod = 0.8;
+      break;
+    case "Eat Healthy":
+      bmrMod = 1;
+      break;
+  }
+  return bmrMod;
+}
 
-console.log(bmrAct("active"));
+// console.log(bmrAct("active", 1));
 
 module.exports = function(app) {
   // Load index page
@@ -49,22 +64,22 @@ module.exports = function(app) {
   // Load example page and pass in an example by id
   app.get("/example/:id", function(req, res) {
     db.Example.findOne({ where: { id: req.params.id } }).then(function(info) {
-      var bmr = bmrValue(info.height, info.weight, info.age, info.sex);
-      var bmrMod 
-      switch(info.goal){
-        case "Gain Muscle":
-          bmrMod = 1.15;
-          break;
-        case "Weight Loss":
-          bmrMod = .8;
-          break;
-      }
-      // console.log("BMR LOGGING", bmr);
+      var basalMetRate = bmrValue(info.height, info.weight, info.age, info.sex);
+      var bmrActivity = bmrAct(info.activity, basalMetRate).toFixed(2);
+      var bmrRec = (bmrMod(info.goal) * bmrActivity).toFixed(0);
+      var protein = Math.round(0.8 * info.weight); //0.8 means grams of protein. We are multiplying by bodyweight to get how many grams of protein they should eat.
+      var fat = Math.round((0.25 * bmrRec) / 9); //The calories from fat should be 25% of total goal calories. You then need to divide by 9 in order to get the grams of fat they should eat.
+      var carbs = Math.round((bmrRec - protein * 4 - fat * 9) / 4); //The remaining macro is carbs. We just subtract the amount of calories from protein AND fat from the total goal calories. We then divide by 4 to get the amount of carbs in grams.
+      console.log(info.activity);
+      console.log(basalMetRate);
       res.render("example", {
         example: info,
-        bmr: bmr,
-        test: bmrAct(info.activity, bmr),
-        bmrRec: bmrAct(info.activity, bmr) * bmrMod
+        bmr: basalMetRate,
+        bmrAct: bmrActivity,
+        bmrRec: bmrRec,
+        proteins: protein,
+        fats: fat,
+        carbz: carbs
       });
     });
     // db.Example.findAll({ where: { id: req.params.id } }).then(function(info) {
@@ -83,6 +98,12 @@ module.exports = function(app) {
     //     test: height
     //   });
     // });
+  });
+
+  app.get("/workout", function(req, res) {
+    res.render("workout", {
+      workout: "Workout"
+    });
   });
 
   // Render 404 page for any unmatched routes
