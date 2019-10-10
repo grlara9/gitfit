@@ -1,16 +1,44 @@
+#home {
+  background-color: #e0e0e0;
+  background-image: url("bg.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+}
+
+#logo{
+  font-family: 'Poiret One', cursive;
+  color:#ff7f08;
+  text-align: center;
+}
+
 .list-group-item {
   line-height: 2.5;
 }
 .navbar{
-  background:rgb(0, 108, 249);
+  background: black;
+  border-bottom-style: solid;
+  border-bottom-width: 5px;
+  border-color: #ff7f08;
 }
-.nav-link, .navbar-brand{
+.nav-link{
   color:#f4f4f4;
-  
 }
+
+.nav-link:hover {
+  color:#ff7f08;
+}
+
 .navbar-brand{
-  font-size: 30px;
+  font-size: 40px;
+  font-family: 'Poiret One', cursive;
+  color:#f4f4f4;
 }
+
+.navbar-brand:hover{
+  color:#ff7f08;
+}
+
 .navbar-collapse{
   justify-content: flex-end;
 }
@@ -23,8 +51,10 @@
 
 
 #title {
-  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-family: 'Darker Grotesque', sans-serif;
   padding: 10px;
+  text-align: center;
+  font-size: 30px;
 }
 
 #title2 {
@@ -39,5 +69,27 @@
   font-size: 30px;
 }
 .container {
-  padding: 50px;
+  padding-top: 50px;
+  background-color: #fafafa;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #bfbfbf;
+
+}
+
+.list-group {
+  margin-top: 10px;
+  max-width: 250px;
+}
+
+#submit {
+margin-top: 30px;
+margin-bottom: 30px;
+color: black;
+background-color: #0be642;
+}
+
+#delete-btn {
+  color: red;
+  background-color: white;
 }
