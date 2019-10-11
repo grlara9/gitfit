@@ -52,7 +52,8 @@ var refreshExamples = function() {
         .append($a);
 
       var $button = $("<button>")
-        .addClass("btn btn-danger float-right delete")
+        .addClass("btn btn-danger float-right delete btn-flat")
+        .attr('id', 'delete-btn')
         .text("ｘ");
 
       $li.append($button);
