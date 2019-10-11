@@ -8,29 +8,42 @@ var env = process.env.NODE_ENV || "development";
 var config = require(__dirname + "/../config/config.json")[env];
 var db = {};
 var mysql = require("mysql");
-var connection;
 
-// if (config.use_env_variable) {
-//   var sequelize = new Sequelize(process.env[config.use_env_variable]);
-// } else {
-//   var sequelize = new Sequelize(
-//     config.database,
-//     config.username,
-//     process.env.DB_PASS,
-//     config
-//   );
-// }
+if (config.use_env_variable) {
+  var sequelize = new Sequelize(process.env[config.use_env_variable]);
+} else {
+  var sequelize = new Sequelize(
+    config.database,
+    config.username,
+    process.env.DB_PASS,
+    config
+  );
+}
 
 
 if (process.env.JAWSDB_URL) {
-  connection = mysql.createConnection(process.env.JawsDB_URL);
+ var connection = mysql.createConnection(process.env.JawsDB_URL);
+ connection.connect(function(err) {
+  if (err) {
+    console.error("error connecting: " + err.stack);
+    return;
+  }
+  console.log("connected as id " + connection.threadId);
+});
 } else {
-  connection = mysql.createConnection({
+ var connection = mysql.createConnection({
     host: 'localhost',
     user: 'root',
     password: null,
     database: 'fitness_db'
-  })
+  }) 
+  connection.connect(function(err) {
+    if (err) {
+      console.error("error connecting: " + err.stack);
+      return;
+    }
+    console.log("connected as id " + connection.threadId);
+  });
 }
 
 fs.readdirSync(__dirname)
