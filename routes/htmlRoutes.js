@@ -64,7 +64,7 @@ module.exports = function(app) {
   // Load example page and pass in an example by id
   app.get("/example/:id", function(req, res) {
     db.Example.findOne({ where: { id: req.params.id } }).then(function(info) {
-      var basalMetRate = bmrValue(info.height, info.weight, info.age, info.sex);
+      var basalMetRate = bmrValue(info.height, info.weight, info.age, info.sex).toFixed(2);
       var bmrActivity = bmrAct(info.activity, basalMetRate).toFixed(2);
       var bmrRec = (bmrMod(info.goal) * bmrActivity).toFixed(0);
       var protein = Math.round(0.8 * info.weight); //0.8 means grams of protein. We are multiplying by bodyweight to get how many grams of protein they should eat.

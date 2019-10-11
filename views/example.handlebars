@@ -1,5 +1,7 @@
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
 <nav class="navbar navbar-expand-lg fixed-top ">
-  <a class="navbar-brand" href="index.html" style="font-family: 'Pacifico', cursive;">gitFit APP</a>
+  <a class="navbar-brand" href="index.html">gitFit App</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
     aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -11,12 +13,6 @@
       <li class="nav-item">
         <a class="nav-link " data-value="portfolio" href="#">Exercises</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link " data-value="blog" href="#">Meal Prep</a></li>
-      <li class="nav-item">
-        <a class="nav-link " data-value="team" href="#"></a></li>
-      <li class="nav-item">
-        <a class="nav-link " data-value="contact" href="#">Contact</a></li>
     </ul>
   </div>
 </nav>
@@ -52,23 +48,55 @@
                 <strong>Sex</strong>: {{example.sex}}
               </p>
 
-              <a href="/">← Back To Home</a>
+              <a id="breadcrumb" href="/">← Back To Home</a>
         </div>
       </div>
     </div>
   </div>
+
+  <div class="row">
+    <div class="col-8 offset-2">
+      <!-- USER RESULTS IN COLLAPSIBLE BOXES -->
+      <ul class="collapsible">
+        <li>
+          <div class="collapsible-header"><i class="material-icons">expand_more</i>BMR</div>
+          <div class="collapsible-body"><span>Based off of your physical stats, your Basal Metabolic Rate (BMR) is: <br> {{bmr}} </span></div>
+        </li>
+        <li>
+          <div class="collapsible-header"><i class="material-icons">expand_more</i>BMR + Activity Level</div>
+          <div class="collapsible-body"><span>Based off of your BMR plus your Activity Factor, your BMR is: <br> {{bmrAct}}</span></div>
+        </li>
+        <li>
+          <div class="collapsible-header"><i class="material-icons">expand_more</i>BMR Based on Goals</div>
+          <div class="collapsible-body"><span>Our daily recommended caloric intake based on your statistics and goal is: <br> {{bmrRec}}</span></div>
+        </li>
+        <li>
+          <div class="collapsible-header"><i class="material-icons">expand_more</i>Macronutrients</div>
+          <div class="collapsible-body"><span>Your macronutrient breakdown is: <br> {{proteins}} grams of protein <br> {{fats}} grams of fat <br> {{carbz}} grams of carbohydrates </span></div>
+        </li>
+      </ul>
+    </div>
+  </div>
+
 </div>
-<div>
-  <h3>Based off of your physical stats, your Basal Metabolic Rate (BMR) is {{bmr}} </h1>
-</div>
-<div>
-  <h3>Your BMR + Activity Factor is {{bmrAct}}</h1>
-</div>
-<div>
-  <h3>
-    Our daily recommended caloric intake based on your statistics and goal is {{bmrRec}}
-  </h3>
-</div>
-<div>
-  <h4>Your Macronutrient breakdown is {{proteins}} grams of protein, {{fats}} grams of fat, and {{carbz}} grams of carbohydrates. </h4>
-</div>
+
+
+
+
+
+<!-- JAVASCRIPT FOR COLLAPISLBE BOXES-->
+  <script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.collapsible');
+    var instances = M.Collapsible.init(elems, options);
+  });
+
+  // Or with jQuery
+
+  $(document).ready(function(){
+    $('.collapsible').collapsible();
+    instance.open(3);
+  });
+
+  </script>
+

@@ -63,12 +63,13 @@
 }
 
 #stats {
-  background-color: black;
-  color: white;
+  background-color: white;
+  color: black;
 }
 #userStats {
   font-size: 30px;
 }
+
 .container {
   padding-top: 50px;
   background-color: #fafafa;
@@ -94,6 +95,28 @@ background-color: #0be642;
   color: red;
   background-color: white;
 }
+
+
+
+#breadcrumb{
+  color: #ff7f08;
+}
+
+
+.collapsible-header {
+  font-style: strong;
+  font-size: 16px;
+}
+
+#select_workout_text{
+  font-size: 20px;
+  color: black;
+}
+
+#workout_container {
+  margin-top: 10%;
+}
+
 
 #selectionList {
   position: absolute;
