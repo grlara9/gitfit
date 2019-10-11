@@ -10,16 +10,16 @@ var db = {};
 var mysql = require("mysql");
 var connection;
 
-if (config.use_env_variable) {
-  var sequelize = new Sequelize(process.env[config.use_env_variable]);
-} else {
-  var sequelize = new Sequelize(
-    config.database,
-    config.username,
-    process.env.DB_PASS,
-    config
-  );
-}
+// if (config.use_env_variable) {
+//   var sequelize = new Sequelize(process.env[config.use_env_variable]);
+// } else {
+//   var sequelize = new Sequelize(
+//     config.database,
+//     config.username,
+//     process.env.DB_PASS,
+//     config
+//   );
+// }
 
 
 if (process.env.JAWSDB_URL) {
