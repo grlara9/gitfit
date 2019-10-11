@@ -20,31 +20,19 @@ if (config.use_env_variable) {
   );
 }
 
-
+var connection;
 if (process.env.JAWSDB_URL) {
- var connection = mysql.createConnection(process.env.JawsDB_URL);
- connection.connect(function(err) {
-  if (err) {
-    console.error("error connecting: " + err.stack);
-    return;
-  }
-  console.log("connected as id " + connection.threadId);
-});
+  connection = mysql.createConnection(process.env.JawsDB_URL);
 } else {
- var connection = mysql.createConnection({
+  connection = mysql.createConnection({
     host: 'localhost',
     user: 'root',
     password: null,
     database: 'fitness_db'
   }) 
-  connection.connect(function(err) {
-    if (err) {
-      console.error("error connecting: " + err.stack);
-      return;
-    }
-    console.log("connected as id " + connection.threadId);
-  });
 }
+connection.connect();
+
 
 fs.readdirSync(__dirname)
   .filter(function(file) {
@@ -67,3 +55,4 @@ db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
 module.exports = db;
+module.exports = connection;
