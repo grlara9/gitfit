@@ -5,9 +5,8 @@ var path = require("path");
 var Sequelize = require("sequelize");
 var basename = path.basename(module.filename);
 var env = process.env.NODE_ENV || "development";
-var config = require(__dirname + "/../config/config.json")[env];
+var config = require(__dirname + "/../config/config.js")[env];
 var db = {};
-var mysql = require("mysql");
 
 if (config.use_env_variable) {
   var sequelize = new Sequelize(process.env[config.use_env_variable]);
@@ -19,20 +18,6 @@ if (config.use_env_variable) {
     config
   );
 }
-
-var connection;
-if (process.env.JAWSDB_URL) {
-  connection = mysql.createConnection(process.env.JawsDB_URL);
-} else {
-  connection = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: null,
-    database: 'fitness_db'
-  }) 
-}
-connection.connect();
-
 
 fs.readdirSync(__dirname)
   .filter(function(file) {
@@ -55,4 +40,3 @@ db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
 module.exports = db;
-module.exports = connection;
